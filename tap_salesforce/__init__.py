@@ -522,7 +522,6 @@ def main_impl():
             default_start_date=CONFIG.get('start_date'),
             api_type=CONFIG.get('api_type'))
         sf.login()
-
         if args.discover:
             do_discover(sf, CONFIG.get("streams_to_discover", []))
         elif args.properties or args.catalog:
