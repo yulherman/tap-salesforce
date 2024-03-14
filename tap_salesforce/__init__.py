@@ -473,7 +473,7 @@ async def sync_catalog_entry(sf, catalog_entry, state):
         bookmark_is_empty = state.get('bookmarks', {}).get(
             catalog_entry['tap_stream_id']) is None
 
-        if replication_key or bookmark_is_empty:
+        if not replication_key or bookmark_is_empty:
             singer.write_message(activate_version_message)
             state = singer.write_bookmark(state,
                                           catalog_entry['tap_stream_id'],
